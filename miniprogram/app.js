@@ -29,6 +29,7 @@ App({
       //homeworkLeft: 0,
       homeworkCurrent: 1,
 
+      homeworkNo : [],
 
 
 

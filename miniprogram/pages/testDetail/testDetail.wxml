@@ -1,31 +1,57 @@
 <!--pages/testDetail/testDetail.wxml-->
-<view id="line"></view>
-<view id="body">
-	<view id="header">
-		<text>作业编号: {{homeworkId}}</text>
-		<text id="tips">题目总数：{{homeworkCount}}</text>
-	</view>
-	<view id="test">
-		<text id="title">题目{{homeworkCurrent}}</text>
-		<text id="problem">{{testQuestion}}</text>
-		<!--radio-group id="choice" bindchange="getChoiceValue">
-			<view>
-				<radio value="{{answer1}}">A. {{answer1}}</radio>
-				<radio value="{{answer2}}">B. {{answer2}}</radio>
+
+<view class="page">
+	<!-- 侧边栏内容 -->
+	<view class="page-slidebar">
+		<view class="page-content">
+			<view class="wc"  wx:for="{{problemNo}}" data-index="{{index}}" bindtap="showChooseProblem">
+				<view wx:if="{{problemColor[index] == true}}" style="color:rgb(43,228,43)">{{item}}</view>
+				<view wx:else style="color:rgb(0,0,0)">{{item}}</view>
 			</view>
-			<view>
-				<radio value="{{answer3}}">C. {{answer3}}</radio>
-				<radio value="{{answer4}}">D. {{answer4}}</radio>
-			</view>
-		</radio-group-->
-		<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
-		<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
-	</view>
-	<view class="bottomButton">
-		<button class="button" bindtap="showLastProblem">上一题</button>
-		<button class="button" bindtap="showNextProblem">下一题</button>
-		<button class="button" bindtap="saveAnswerOnline">暂时保存</button>
-		<button class="button" bindtap="submitAnswerOnline">提交作业</button>
+		</view>
 	</view>
 
+	<!-- 主页内容 -->
+
+	<!-- （open ? 'c-state' : ''）三元运算符： -->
+	<!-- 1.默认情况下 open 为 false -->
+	<!-- 2.当点击左上角图标的时候或者屏幕向左滑动，open 变化 true -->
+	<!-- 3.当 open 为 true 时，会加上类名为 c-state 和 cover 的 css 样式 -->
+
+	<!-- bindtouchstart、 bindtouchmove、bindtouchend -->
+	<!-- 当手指触摸屏幕并滑动时，所触发的三个函数 -->
+	<view bindtouchmove="bindtapDrag" bindtouchend="bindtapEnd" bindtouchstart="bindtapStart" class="page-top {{open ? ['c-state','cover'] : ''}} ">
+		<view id="line"></view>
+		<view id="body">
+			<view id="header">
+				<text>作业编号: {{homeworkId}}</text>
+				<text id="tips">题目总数：{{homeworkCount}}</text>
+			</view>
+			<view id="test">
+				<view>
+					<image bindtap="bindtapIcon" src="icon/catalogue.png" class="catalogueIcon"></image>
+				</view>
+				<text id="title">题目{{homeworkCurrent}}</text>
+				<text id="problem">{{testQuestion}}</text>
+				<!--radio-group id="choice" bindchange="getChoiceValue">
+				<view>
+					<radio value="{{answer1}}">A. {{answer1}}</radio>
+					<radio value="{{answer2}}">B. {{answer2}}</radio>
+				</view>
+				<view>
+					<radio value="{{answer3}}">C. {{answer3}}</radio>
+					<radio value="{{answer4}}">D. {{answer4}}</radio>
+				</view>
+			</radio-group-->
+				<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
+				<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
+			</view>
+			<view class="bottomButton">
+				<button class="button" bindtap="showLastProblem">上一题</button>
+				<button class="button" bindtap="showNextProblem">下一题</button>
+				<button class="button" bindtap="saveAnswerOnline">暂时保存</button>
+				<button class="button" bindtap="submitAnswerOnline">提交作业</button>
+			</view>
+		</view>
+	</view>
 </view>
