@@ -1,0 +1,23 @@
+/* miniprogram/pages/finishTest/finishTest.wxss */
+#body{
+  width:600rpx;
+  margin:0 auto;
+  margin-top:50rpx;
+}
+#body text{
+  display:block;
+  margin:0 auto;
+  margin-top:50rpx;
+  font-size:40rpx;
+}
+#choose{
+  display:flex;
+  margin:0 auto;
+  margin-top:60rpx;
+}
+#choose button{
+  width:30%;
+  border:1px black solid;
+  border-radius: 20rpx;
+  padding:15rpx;
+}

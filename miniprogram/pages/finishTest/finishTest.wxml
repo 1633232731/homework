@@ -1,0 +1,12 @@
+<!--miniprogram/pages/finishTest/finishTest.wxml-->
+<view id="body">
+    <text>恭喜你完成考试！</text>
+    <text>最终得分：{{score}}</text>
+    <text>正确题数：{{correct}}</text>
+    <text>错误题数：{{wrong}}</text>
+  <view id="choose">
+    <button bindtap="review">查看错题</button>
+    <button bindtap="continue">继续做题</button>
+    <button bindtap="logout">退出</button>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view id="box">
+  <view id="title">用户登录</view>
+  <view id="name">
+    <text class="tag">用户名</text>
+    <input type="text" id="inputUn" name="username" bindinput="getUserName"></input>
+  </view>
+  <view id="password">
+    <text class="tag">密码</text>
+    <view id="passwordBox">
+      <input type="text" id="inputPw" bindinput="getUserPassword" password="{{isShowPassword}}"></input>
+      <image src="{{imgSrc}}" style="width:50rpx;height:50rpx;" id="eye" bindtap="showPassword" ></image>
+    </view>
+  </view>
+  <view id="button">
+  <!--button id="register" bindtap="register">点击注册</button-->
+  <button id="login" bindtap="navigatorToChoose">登录</button>
+  </view>
+</view>
+
+
+

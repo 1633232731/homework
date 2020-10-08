@@ -1,0 +1,71 @@
+/* pages/testDetail/testDetail.wxss */
+
+#line {
+  height: 1rpx;
+  width: 100%;
+  background-color: grey;
+  position: absolute;
+  top: 50rpx;
+}
+
+#body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#header text {
+  font-size: 22rpx;
+  color: grey;
+}
+
+#tips {
+  position: absolute;
+  right: 80rpx;
+  top: 8rpx;
+}
+
+#test {
+  margin-top: 60rpx;
+}
+
+#title {
+  font-size: 40rpx;
+}
+
+#problem {
+  display: block;
+  font-size: 40rpx;
+  margin: 50rpx 0;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+
+#choice radio {
+  width: 50%;
+}
+
+#choice view {
+  margin-bottom: 50rpx;
+}
+
+.answerArea{
+  margin-top: 20rpx;
+  border: 1px black solid;
+  border-radius: 20rpx;
+}
+
+.bottomButton{
+  text-align: center;
+}
+
+.bottomButton .button {
+  /*display:inline-block;*/
+  border: 1px black solid;
+  border-radius: 20rpx;
+  width: 60%; 
+  padding: 15rpx;
+  margin-top: 50rpx;
+  /*margin-left: 10%;*/
+}
+

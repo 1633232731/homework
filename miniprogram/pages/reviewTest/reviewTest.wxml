@@ -1,0 +1,9 @@
+<!--miniprogram/pages/reviewTest/reviewTest.wxml-->
+<view id="content">
+  <text>以下是您的错题\n</text>
+  <text>{{review}}</text>
+  <view id="button">
+    <button bindtap="continue" class="button">继续做题</button>
+    <button bindtap="logout" class="button">退出</button>
+  </view>
+</view>

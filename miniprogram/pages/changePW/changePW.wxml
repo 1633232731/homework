@@ -1,0 +1,18 @@
+<!--miniprogram/pages/changePW/changePW.wxml-->
+<view id="body">
+  <view class="vessel">
+    <text class="title">原密码</text>
+    <input type="text" class="input" bindinput="getFormerPassword"></input>
+  </view>
+  <view class="vessel">
+    <text class="title">新密码</text>
+    <input type="text" class="input" bindinput="getNewPassword"></input>
+  </view>
+  <view class="vessel">
+    <text class="title">确认密码</text>
+    <input type="text" class="input" bindinput="getConfirmPassword"></input>
+  </view>
+  <button id="confirm" bindtap="checkChanging">确认修改</button>
+</view>
+
+

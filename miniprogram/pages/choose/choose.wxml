@@ -1,0 +1,39 @@
+<!--miniprogram/pages/choose/choose.wxml-->
+<view id="line"></view>
+<view id="body">
+	<view id="header">
+		<text id="verbal">欢迎使用作业管理系统，{{userName}}</text>
+		<button id="changePw" bindtap="changePassword">修改密码</button>
+	</view>
+
+	<!--view id="choose">
+		<text class="choose">难度选择</text>
+		<picker class="choose" bindchange="bindPickerChange" value="{{levelName}}" range="{{level}}">
+			<view class="vessel">{{levelName}}</view>
+		</picker>
+		<text class="choose" id="tmsl">题目数量</text>
+		<input type="text" class="vessel choose" bindinput="getQNumber"></input>
+	</view>
+	<button id="create" bindtap="testOnReady">生成试卷</button-->
+
+</view>
+<block wx:for="{{testOverview}}">
+	<button bindtap="navigateDetail" data-index="{{index}}" data-item="{{item}}" style="width:725rpx" class="overview" hover-class="navigator-hover">
+		<view class="id">编号： {{item.id}}</view>
+		<view class="desc">出题人： {{item.author}}</view>
+		<view class="desc">年份： {{item.year}}</view>
+		<view class="desc">学期：{{item.semester}}</view>
+		<view class="desc">班级：{{item.class_}}</view>
+		<view class="desc">描述：{{item.description}}</view>
+		<view class="grade">成绩：{{item.grade}}</view>
+		<view>
+			<view wx:if="{{item.answerStatus == 0}}" class="statusActive">作答状态：{{item.answerStatus}}</view>
+			<view wx:else class="statusFinish"> 作答状态：{{item.answerStatus}} </view>
+		</view>
+		<view>
+			<view wx:if="{{item.correctStatus == 0}}" class="statusActive">批改状态：{{item.correctStatus}}</view>
+			<view wx:else class="statusFinish"> 批改状态：{{item.correctStatus}} </view>
+		</view>
+		<view class="desc">出题时间：{{item.testTime}}</view>
+	</button>
+</block>

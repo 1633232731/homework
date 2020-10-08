@@ -1,0 +1,20 @@
+/* miniprogram/pages/reviewTest/reviewTest.wxss */
+#content{
+  width:600rpx;
+  margin:0 auto;
+  margin-top:50rpx;
+}
+#content text{
+  font-size:30rpx;
+}
+#button{
+  display:flex;
+}
+.button{
+  border:1px black solid;
+  border-radius: 20rpx;
+  padding:15rpx;
+  width:48%;
+  margin-top:100rpx;
+  margin-left:5rpx;
+}

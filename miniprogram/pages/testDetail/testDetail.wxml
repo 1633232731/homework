@@ -1,0 +1,31 @@
+<!--pages/testDetail/testDetail.wxml-->
+<view id="line"></view>
+<view id="body">
+	<view id="header">
+		<text>作业编号: {{homeworkId}}</text>
+		<text id="tips">题目总数：{{homeworkCount}}</text>
+	</view>
+	<view id="test">
+		<text id="title">题目{{homeworkCurrent}}</text>
+		<text id="problem">{{testQuestion}}</text>
+		<!--radio-group id="choice" bindchange="getChoiceValue">
+			<view>
+				<radio value="{{answer1}}">A. {{answer1}}</radio>
+				<radio value="{{answer2}}">B. {{answer2}}</radio>
+			</view>
+			<view>
+				<radio value="{{answer3}}">C. {{answer3}}</radio>
+				<radio value="{{answer4}}">D. {{answer4}}</radio>
+			</view>
+		</radio-group-->
+		<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
+		<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
+	</view>
+	<view class="bottomButton">
+		<button class="button" bindtap="showLastProblem">上一题</button>
+		<button class="button" bindtap="showNextProblem">下一题</button>
+		<button class="button" bindtap="saveAnswerOnline">暂时保存</button>
+		<button class="button" bindtap="submitAnswerOnline">提交作业</button>
+	</view>
+
+</view>
