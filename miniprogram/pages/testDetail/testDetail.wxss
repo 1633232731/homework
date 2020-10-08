@@ -49,13 +49,13 @@
   margin-bottom: 50rpx;
 }
 
-.answerArea{
+.answerArea {
   margin-top: 20rpx;
   border: 1px black solid;
   border-radius: 20rpx;
 }
 
-.bottomButton{
+.bottomButton {
   text-align: center;
 }
 
@@ -63,9 +63,80 @@
   /*display:inline-block;*/
   border: 1px black solid;
   border-radius: 20rpx;
-  width: 60%; 
+  width: 60%;
   padding: 15rpx;
   margin-top: 50rpx;
   /*margin-left: 10%;*/
 }
 
+
+page,
+.page {
+  font-family: 'PingFang SC',
+    'Helvetica Neue',
+    Helvetica,
+    'Droid Sans Fallback',
+    'Microsoft Yachei',
+    sans-serif;
+}
+
+/* 侧边栏样式 */
+.page-slidebar {
+  height: 100%;
+  width: 750rpx;
+  position: fixed;
+  background-color: white;
+  z-index: 0;
+}
+
+/* 控制侧边栏的内容距离顶部的距离 */
+.page-content {
+  padding-top: 40rpx;
+  padding-left: 50rpx;
+}
+
+/* 侧边栏内容的 css 样式 */
+.wc {
+  font-size: initial;
+  padding: 20rpx 0 20rpx 80rpx;
+  border-bottom: 1px solid #eee;
+}
+
+/* 当屏幕向左滑动，出现侧边栏的时候，主页的动画样式 */
+/* scale：取值范围 0~1 ，表示屏幕大小是原来的百分之几，可以自己修改成 0.8 试下*/
+/* translate(60%,0%) 表示向左滑动的时候，侧边栏占用平时的宽度为 60%   */
+.c-state {
+  transform: rotate(0deg) scale(1) translate(40%, 0%);
+  -webkit-transform: rotate(0deg) scale(1) translate(40%, 0%);
+}
+
+/* 主页样式 */
+.page-top {
+  height: 100%;
+  position: fixed;
+  width: 750rpx;
+  background-color: #f6f6f6;
+  z-index: 0;
+  transition: All 0.4s ease;
+  -webkit-transition: All 0.4s ease;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* 左上角图标的样式 */
+.catalogueIcon {
+  /*position: absolute;*/
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 遮盖层样式 */
+.cover {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.5;
+  z-index: 9000;
+}

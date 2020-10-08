@@ -14,8 +14,87 @@ Page({
     //homeworkLeft: 0,
     homeworkCount: 0,
     homeworkCurrent: 1,
+
+    //选题页面的打开
+    open: false,
+    // mark 是指原点x轴坐标
+    markX: 0,
+    markY: 0,
+    // newmark 是指移动的最新点的x轴坐标 
+    newmarkX: 0,
+    newmarkY: 0,
+
+    istoright: true,
+    isDrag: false,
+
+    problemNo: [],    // 侧边栏题目序号
+    problemColor: [] //  侧边栏序号颜色
   },
 
+  // 点击左上角小图标事件
+  bindtapIcon: function (e) {
+    if (this.data.open) {
+      this.setData({
+        open: false
+      });
+    } else {
+      this.setData({
+        open: true
+      });
+    }
+
+  },
+
+  bindtapStart: function (e) {
+    // touchstart事件
+    // 把手指触摸屏幕的那一个点的 x 轴坐标赋值给 mark 和 newmark
+    this.data.markX = this.data.newmarkX = e.touches[0].pageX;
+    this.data.markY = this.data.newmarkY = e.touches[0].pageY;
+  },
+
+  bindtapDrag: function (e) {
+    this.setData({
+      isDrag: true
+    })
+  },
+
+  bindtapEnd: function (e) {
+    // touchend事件
+    this.data.newmarkX = e.changedTouches[0].pageX;
+    this.data.newmarkY = e.changedTouches[0].pageY;
+
+    // 手指从左向右移动,并且垂直不超过限度
+    if (this.data.markX < this.data.newmarkX && Math.abs(this.data.newmarkY - this.data.markY) <= 40) {
+      this.istoright = true;
+    }
+
+    // 手指从右向左移动
+    if (this.data.markX > this.data.newmarkX) {
+      this.istoright = false;
+    }
+    // 通过改变 open 的值，让主页加上滑动的样式
+    if (this.istoright) {
+      this.setData({
+        open: true
+      });
+    } else {
+      this.setData({
+        open: false
+      });
+    }
+    if (this.data.isDrag == false && this.data.open == true) {
+      this.setData({
+        open: false
+      });
+    }
+    this.data.isDrag = false
+    this.data.markX = 0;
+    this.data.newmarkX = 0;
+    this.data.markY = 0;
+    this.data.newmarkY = 0;
+    /*console.log("开始Y",this.data.markY)
+    console.log("结束Y",this.data.newmarkY)*/
+  },
   onGetAllHomework: async function () {
     //参数为测试的信息
 
@@ -69,7 +148,9 @@ Page({
       //homeworkLeft: app.globalData.homeworkLeft,
       homeworkCount: app.globalData.homeworkInfo.questionCount,
       homeworkCurrent: app.globalData.homeworkCurrent,
+      problemNo: app.globalData.homeworkNo
     })
+
     if (app.globalData.answer[app.globalData.homeworkCurrent - 1] != undefined) {
       that.setData({
         currentAnswer: app.globalData.answer[app.globalData.homeworkCurrent - 1]
@@ -80,6 +161,22 @@ Page({
         currentAnalysis: app.globalData.analysis[app.globalData.homeworkCurrent - 1]
       })
     }
+    // 为侧边栏索引获取颜色值
+    var color = []
+    for (let i = 0; i < that.data.homeworkCount; i++) {
+      if (app.globalData.answer[i] != undefined && app.globalData.answer[i] != "") {
+        // 已填写答案为绿色
+        color.push(true)
+      }
+      // 未填写答案为黑色
+      else {
+        color.push(false)
+      }
+    }
+    that.setData({
+      problemColor: color
+    })
+    //console.log(that.data.problemColor)
   },
 
   bindInputSaveAnswer: function (e) {
@@ -154,6 +251,17 @@ Page({
      */
   },
 
+  showChooseProblem: function (e) {
+    /**
+     * 跳转至任意题目
+     */
+
+    // index第一个是0，后面需要+1
+    app.globalData.homeworkCurrent = e.currentTarget.dataset.index + 1
+    wx.redirectTo({
+      url: '../testDetail/testDetail',
+    })
+  },
   showNextProblem: function () {
     /**
      * 获取下一题

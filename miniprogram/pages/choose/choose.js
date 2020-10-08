@@ -23,22 +23,30 @@ Page({
       url: '../changePW/changePW'
     })
   },
-  navigateDetail: function (e) {
-    if (e.currentTarget.dataset.item.answerStatus == 0) {
-      // 把 app 中的数据清空
-      app.globalData.homeworkInfo = e.currentTarget.dataset.item
-      app.globalData.isGetHomework = false
-      app.globalData.homework = []
-      app.globalData.answer = []
-      app.globalData.analysis = []
-      //app.globalData.homeworkLeft = app.globalData.homeworkInfo.questionCount
-      app.globalData.homeworkCurrent = 1
 
+  initGlobalData: function (e) {
+    // 把 app 中的数据清空
+    app.globalData.homeworkInfo = e.currentTarget.dataset.item
+    app.globalData.isGetHomework = false
+    app.globalData.homework = []
+    app.globalData.answer = []
+    app.globalData.analysis = []
+    //app.globalData.homeworkLeft = app.globalData.homeworkInfo.questionCount
+    app.globalData.homeworkCurrent = 1
+    app.globalData.homeworkNo = []
+    for (let i = 1; i <= app.globalData.homeworkInfo.questionCount; i++) {
+      app.globalData.homeworkNo.push(i)
+    }
+  },
+  navigateDetail: function (e) {
+    var that = this
+    if (e.currentTarget.dataset.item.answerStatus == 0) {
+      that.initGlobalData(e)
       wx.navigateTo({
         url: '/pages/testDetail/testDetail',
       })
     }
-    else if(e.currentTarget.dataset.item.answerStatus == 1){
+    else if (e.currentTarget.dataset.item.answerStatus == 1) {
 
     }
   },
