@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/teacherPage/teacherPage",
     "pages/login/login",
     "pages/changePW/changePW",
     "pages/choose/choose",
-    "pages/testPaper/testPaper",
-    "pages/register/register",
     "pages/finishTest/finishTest",
-    "pages/reviewTest/reviewTest"
+    "pages/reviewTest/reviewTest",
+    "pages/teacherPage/studentDetail/studentDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

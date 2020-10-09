@@ -59,6 +59,11 @@ Page({
         url: '../choose/choose',
       })
     }
+    else{
+      wx.navigateTo({
+        url: '../teacherPage/teacherPage',
+      })
+    }
   },
 
   register : function(){

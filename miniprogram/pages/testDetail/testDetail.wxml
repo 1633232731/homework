@@ -43,14 +43,14 @@
 					<radio value="{{answer4}}">D. {{answer4}}</radio>
 				</view>
 			</radio-group-->
-				<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
-				<textarea confirm-type="done" type="text" focus='true' bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
+				<textarea disabled="{{isFinish}}" cursor-spacing="200" confirm-type="done" type="text" bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
+				<textarea disabled="{{isFinish}}" cursor-spacing="200" confirm-type="done" type="text" bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
 			</view>
 			<view class="bottomButton">
 				<button class="button" bindtap="showLastProblem">上一题</button>
 				<button class="button" bindtap="showNextProblem">下一题</button>
-				<button class="button" bindtap="saveAnswerOnline">暂时保存</button>
-				<button class="button" bindtap="submitAnswerOnline">提交作业</button>
+				<button class="button" bindtap="saveAnswerOnline" disabled="{{isFinish}}">暂时保存</button>
+				<button class="button" bindtap="submitAnswerOnline" disabled="{{isFinish}}">提交作业</button>
 			</view>
 		</view>
 	</view>

@@ -24,7 +24,7 @@ Page({
     })
   },
 
-  initGlobalData: function (e) {
+  initGlobalData: function (e, isFinish) {
     // 把 app 中的数据清空
     app.globalData.homeworkInfo = e.currentTarget.dataset.item
     app.globalData.isGetHomework = false
@@ -37,17 +37,21 @@ Page({
     for (let i = 1; i <= app.globalData.homeworkInfo.questionCount; i++) {
       app.globalData.homeworkNo.push(i)
     }
+    app.globalData.isFinish = isFinish
   },
   navigateDetail: function (e) {
     var that = this
     if (e.currentTarget.dataset.item.answerStatus == 0) {
-      that.initGlobalData(e)
+      that.initGlobalData(e, false)
       wx.navigateTo({
         url: '/pages/testDetail/testDetail',
       })
     }
     else if (e.currentTarget.dataset.item.answerStatus == 1) {
-
+      that.initGlobalData(e, true)
+      wx.navigateTo({
+        url: '/pages/testDetail/testDetail',
+      })
     }
   },
 

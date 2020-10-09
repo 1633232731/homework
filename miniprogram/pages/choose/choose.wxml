@@ -27,12 +27,12 @@
 		<view class="desc">描述：{{item.description}}</view>
 		<view class="grade">成绩：{{item.grade}}</view>
 		<view>
-			<view wx:if="{{item.answerStatus == 0}}" class="statusActive">作答状态：{{item.answerStatus}}</view>
-			<view wx:else class="statusFinish"> 作答状态：{{item.answerStatus}} </view>
+			<view wx:if="{{item.answerStatus == 0}}" class="statusActive">作答状态：进行中</view>
+			<view wx:else class="statusFinish"> 作答状态：已完成 </view>
 		</view>
 		<view>
-			<view wx:if="{{item.correctStatus == 0}}" class="statusActive">批改状态：{{item.correctStatus}}</view>
-			<view wx:else class="statusFinish"> 批改状态：{{item.correctStatus}} </view>
+			<view wx:if="{{item.correctStatus == 0}}" class="statusActive">批改状态：进行中</view>
+			<view wx:else class="statusFinish"> 批改状态：已完成 </view>
 		</view>
 		<view class="desc">出题时间：{{item.testTime}}</view>
 	</button>

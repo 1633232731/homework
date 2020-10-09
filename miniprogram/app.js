@@ -20,26 +20,40 @@ App({
       userName: "",
       _id: "",
 
-      homeworkInfo : {},
-      homework : [],
-      answer : [],
-      analysis : [],
-      isGetHomework : false,
+      homeworkInfo : {},      // choose 中的作业简略信息
+      homework : [],          // 全部作业信息
+      answer : [],            // 所有的答案
+      analysis : [],          // 所有的分析
+      isGetHomework : false,  // 是否从服务器获取过作业
 
       //homeworkLeft: 0,
-      homeworkCurrent: 1,
+      homeworkCurrent: 1,   // 当前作业编号
 
-      homeworkNo : [],
+      homeworkNo : [],      // 作业序号
+      
+      isFinish : false,     // 作业是否结束，结束为false
+
+      
 
 
 
-      levelName: "",
+      // 老师的数据
+
+      studentInfo : {
+        id : "",
+        name : ""
+      }
+
+
+
+
+      /*levelName: "",
       order: 0,
       leftover: 0,
       correct: 0,
       wrong: 0,
       score: 0,
-      review: "",
+      review: "",*/
     }
   }
 })

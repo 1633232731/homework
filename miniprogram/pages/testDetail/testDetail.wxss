@@ -53,6 +53,7 @@
   margin-top: 20rpx;
   border: 1px black solid;
   border-radius: 20rpx;
+  height: 200rpx;
 }
 
 .bottomButton {
