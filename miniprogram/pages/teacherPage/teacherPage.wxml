@@ -1,0 +1,21 @@
+<!--miniprogram/pages/teacherPage/teacherPage.wxml-->
+<view id="line"></view>
+<view id="body">
+	<view id="header">
+		<text id="verbal">欢迎使用作业管理系统，{{userName}}</text>
+	</view>
+	<view class="chooseClass">请选择班级：</view>
+	<picker range="{{pickerClass}}" value="{{selectClass}}" bindchange="bindpicker" class = "picker">
+		<view class="pickerChoose">
+			{{selectClass}}
+		</view>
+	</picker>
+  <view>
+    <block wx:for="{{student}}">
+    <button bindtap="navigateStudentDetail" data-index="{{index}}" data-item="{{item}}" style="width:400rpx" class="student" hover-class="navigator-hover">
+      <view class="studentInfo">{{item.id}}</view>
+      <view class="studentInfo">{{item.name}}</view>
+    </button>
+    </block>
+  </view>
+</view>

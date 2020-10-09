@@ -1,4 +1,6 @@
 // pages/testDetail/testDetail.js
+
+// TODO : textarea为原生组件，在Andriod测试中，获取焦点后弹出输入法会有白屏看不到输入的bug
 const app = getApp()
 Page({
 
@@ -6,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isFinish : Boolean,     // 作业是否结束，结束为true
+
     testQuestion: "",
     currentAnswer: "",
     currentAnalysis: "",
@@ -148,7 +152,8 @@ Page({
       //homeworkLeft: app.globalData.homeworkLeft,
       homeworkCount: app.globalData.homeworkInfo.questionCount,
       homeworkCurrent: app.globalData.homeworkCurrent,
-      problemNo: app.globalData.homeworkNo
+      problemNo: app.globalData.homeworkNo,
+      isFinish : app.globalData.isFinish
     })
 
     if (app.globalData.answer[app.globalData.homeworkCurrent - 1] != undefined) {
@@ -176,7 +181,7 @@ Page({
     that.setData({
       problemColor: color
     })
-    //console.log(that.data.problemColor)
+    console.log(that.data.isFinish)
   },
 
   bindInputSaveAnswer: function (e) {

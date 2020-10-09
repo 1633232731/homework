@@ -1,0 +1,63 @@
+/* miniprogram/pages/teacherPage/teacherPage.wxss */
+
+
+#body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#header text {
+  font-size: 22rpx;
+  color: grey;
+}
+#verbal {
+  font-size: 25rpx;
+  color: grey;
+}
+
+#line {
+  height: 1rpx;
+  width: 100%;
+  background-color: grey;
+  position: absolute;
+  top: 50rpx;
+}
+
+.chooseClass{
+  margin-top: 30rpx;
+}
+.picker{
+  border-radius: 25rpx;
+  background-color: white;
+  border: 1px black solid;
+  margin-top: 20rpx;
+  height: 50rpx;
+  width: 35%;
+}
+.picker .pickerChoose{
+  font-weight: 425;
+  margin-left: 20rpx;
+}
+
+.student {
+  background-color: white;
+  text-align: left;
+  margin-top: 15rpx;
+  border-radius: 25rpx;
+  display: inline-block;
+  border: 1px black solid;
+}
+
+.navigator-hover {
+  position: relative;
+  top: 3rpx;
+  left: 3rpx;
+  opacity: 0.9;
+  background: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.studentInfo{
+  font-size: small;
+  font-weight: 400;
+}
