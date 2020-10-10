@@ -45,6 +45,13 @@
 			</radio-group-->
 				<textarea disabled="{{isFinish}}" cursor-spacing="200" confirm-type="done" type="text" bindinput="bindInputSaveAnswer" class="answerArea" placeholder="请输入答案 maxLength = 140" value="{{currentAnswer}}"></textarea>
 				<textarea disabled="{{isFinish}}" cursor-spacing="200" confirm-type="done" type="text" bindinput="bindInputSaveAnalysis" class="answerArea" placeholder="请输入解析 maxLength = 140" value="{{currentAnalysis}}"></textarea>
+				<view hidden="{{!isFinish}}" class="standardAnswerArea">
+					<text space="nbsp" class="standardAnswer">标准答案：\n</text>
+					<text space="nbsp" class="standardAnswer">{{standardAnswer}} \n\n</text>
+					<text space="nbsp" class="standardAnswer">解析：\n</text>
+					<text space="nbsp" class="standardAnswer">{{standardAnalysis}} \n</text>
+				</view>
+				
 			</view>
 			<view class="bottomButton">
 				<button class="button" bindtap="showLastProblem">上一题</button>

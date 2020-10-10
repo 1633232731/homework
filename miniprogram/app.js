@@ -22,8 +22,10 @@ App({
 
       homeworkInfo : {},      // choose 中的作业简略信息
       homework : [],          // 全部作业信息
-      answer : [],            // 所有的答案
-      analysis : [],          // 所有的分析
+      answer : [],            // 所有的用户答案
+      analysis : [],          // 所有的用户分析
+      standardAnswer : [],    // 标准答案
+      standardAnalysis : [],  // 标准分析
       isGetHomework : false,  // 是否从服务器获取过作业
 
       //homeworkLeft: 0,
@@ -31,7 +33,7 @@ App({
 
       homeworkNo : [],      // 作业序号
       
-      isFinish : false,     // 作业是否结束，结束为false
+      isFinish : Boolean,     // 作业是否结束，结束为true
 
       
 
