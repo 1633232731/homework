@@ -53,13 +53,6 @@ Page({
     var that = this
     that.onGetClass()
 
-    var stu = []
-    for(let i = 0 ;i<30;i++){
-      stu.push({id:i,name:"zzz"})
-    }
-    that.setData({
-      student : stu
-    })
   },
 
   /**

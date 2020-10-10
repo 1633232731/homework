@@ -8,11 +8,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isFinish : Boolean,     // 作业是否结束，结束为true
+    isFinish: Boolean,     // 作业是否结束，结束为true
 
     testQuestion: "",
+
+    // 用户回答
     currentAnswer: "",
     currentAnalysis: "",
+
+    // 标准答案
+    standardAnswer: "",
+    standardAnalysis: "",
 
     homeworkId: "",
     //homeworkLeft: 0,
@@ -99,12 +105,38 @@ Page({
     /*console.log("开始Y",this.data.markY)
     console.log("结束Y",this.data.newmarkY)*/
   },
+
+  onGetStandardAnswerAndAnalysis: async function () {
+    /**
+     * 从服务器获取标准答案和分析，当作业已结束的时候调用该函数
+     * 服务器返回结果放到app.globalData.standardAnswer和app.globalData.standardAnalysis
+     */
+
+     var standardAnswer = ["0x214532222222222222222222222222222222222222222222222222222","0x5234"]
+     var standardAnalysis = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","yyy"]
+
+     app.globalData.standardAnalysis = standardAnalysis
+     app.globalData.standardAnswer = standardAnswer
+
+  },
+
+  onGetStudentAllAnswerAndAnalysis: async function () {
+    /**
+     * 从服务器获取已保存的答案和解析
+     * 结果放到app.globalData.answer和app.globalData.analysis
+     */
+    var answer = ["1111","2222"]
+    var analysis = ["ttt","zzz"]
+    app.globalData.answer = answer
+    app.globalData.analysis = analysis
+  },
+
   onGetAllHomework: async function () {
-    //参数为测试的信息
 
     /**
      * TODO
-     * 需要在这里获取题目：用homeworkInfo.id作为参数,作为一个数组存入question数组
+     * 需要在这里获取题目题目
+     * 服务器返回结果放到app.globalData.homework中
     **/
 
     var that = this
@@ -133,17 +165,12 @@ Page({
     app.globalData.isGetHomework = true
   },
 
-  onGetAllAnswerAndAnalysis: async function () {
-    /**
-     * 从服务器获取已保存的答案和解析
-     */
-
-  },
 
   showPage: function () {
     /**
      * 展示页面的默认值，包括：
-     * 问题、作业id、/*作业剩余/、作业总数、当前作业下标、保存的答案、保存的解析
+     * 问题、作业id、/*作业剩余/、作业总数、当前作业下标
+     * 保存的答案、保存的解析、标准答案、标准解析，颜色
      */
     var that = this
     that.setData({
@@ -153,7 +180,7 @@ Page({
       homeworkCount: app.globalData.homeworkInfo.questionCount,
       homeworkCurrent: app.globalData.homeworkCurrent,
       problemNo: app.globalData.homeworkNo,
-      isFinish : app.globalData.isFinish
+      isFinish: app.globalData.isFinish
     })
 
     if (app.globalData.answer[app.globalData.homeworkCurrent - 1] != undefined) {
@@ -166,6 +193,19 @@ Page({
         currentAnalysis: app.globalData.analysis[app.globalData.homeworkCurrent - 1]
       })
     }
+
+    if (app.globalData.standardAnswer[app.globalData.homeworkCurrent - 1] != undefined) {
+      that.setData({
+        standardAnswer: app.globalData.standardAnswer[app.globalData.homeworkCurrent - 1]
+      })
+    }
+    if (app.globalData.standardAnalysis[app.globalData.homeworkCurrent - 1] != undefined) {
+      that.setData({
+        standardAnalysis: app.globalData.standardAnalysis[app.globalData.homeworkCurrent - 1]
+      })
+    }
+
+
     // 为侧边栏索引获取颜色值
     var color = []
     for (let i = 0; i < that.data.homeworkCount; i++) {
@@ -181,7 +221,7 @@ Page({
     that.setData({
       problemColor: color
     })
-    console.log(that.data.isFinish)
+    //console.log(that.data.isFinish)
   },
 
   bindInputSaveAnswer: function (e) {
@@ -312,7 +352,7 @@ Page({
       app.globalData.homeworkCurrent = that.data.homeworkCount
     }
     else {
-      // 获取下一题
+      // 获取上一题
       app.globalData.homeworkCurrent -= 1
     }
     /*if(app.globalData.answer[that.data.homeworkCurrent] != ""){
@@ -335,9 +375,14 @@ Page({
      * 如果未获取则获取题目
      */
     if (!app.globalData.isGetHomework) {
-      // 第一次进到这个页面里面，需要在服务器上获取全部作业和已经提交的答案
-      that.onGetAllAnswerAndAnalysis()
+      // 第一次进到这个页面里面，
+      // 需要在服务器上获取全部作业、已经提交的答案、作业已结束需要获取正确答案
+      if (app.globalData.homeworkInfo.answerStatus == 1){
+        // 作业已结束
+        that.onGetStandardAnswerAndAnalysis()
+      }
       that.onGetAllHomework()
+      that.onGetStudentAllAnswerAndAnalysis()
       that.showPage()
     }
     else {

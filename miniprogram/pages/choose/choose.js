@@ -42,12 +42,14 @@ Page({
   navigateDetail: function (e) {
     var that = this
     if (e.currentTarget.dataset.item.answerStatus == 0) {
+      // 作业进行中
       that.initGlobalData(e, false)
       wx.navigateTo({
         url: '/pages/testDetail/testDetail',
       })
     }
     else if (e.currentTarget.dataset.item.answerStatus == 1) {
+      // 作业已结束
       that.initGlobalData(e, true)
       wx.navigateTo({
         url: '/pages/testDetail/testDetail',
@@ -55,9 +57,11 @@ Page({
     }
   },
 
-  getTestOverview: function () {  // 从数据库获取简略数据
+
+
+  onGetTestOverview: function () {  // 从数据库获取简略数据
     var that = this
-    // 作业状态、批改状态有：0(进行中)， 1(已完成)
+    // 作业状态、批改状态有：0(进行中)， 1(已结束)
     var temp1 = {
       id: 1,
       author: "杨老师",
@@ -152,7 +156,7 @@ Page({
     that.setData({
       userName: app.globalData.userName
     })
-    that.getTestOverview()
+    that.onGetTestOverview()
   },
 
   /**
